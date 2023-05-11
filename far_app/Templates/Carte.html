@@ -15,8 +15,8 @@ block body %}
     <!--JINJA LOGIC-->
     {% for carte in cartes %}
     <tr class="table-dark">
-      <th scope="row">{{ carte.id_carte }}</th>
-      <td>{{ carte.id_carte }}</td>
+      <th scope="row">{{ carte.id }}</th>
+      <td>{{ carte.id }}</td>
       {% if carte.type_carte == 'Unlimited' %}
 
       <td>{{ carte.type_carte }}</td>
