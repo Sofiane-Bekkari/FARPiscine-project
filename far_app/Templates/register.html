@@ -1,0 +1,45 @@
+{% extends 'layout.html' %} {% block title %} Register page {% endblock %} {%
+block body %}
+<body class="text-center">
+    <div class="container">
+        <h1 class="mb-5">Create an Account!</h1>
+        <form action="POST" class="form-register" style="color: white">
+            <!--NOM-->
+            {{ form.nom.label() }}
+            {{ form.nom(class="form-control mt-2", placeholder="Nom") }}
+            <!--PRENOM-->
+            {{ form.prenom.label() }}
+            {{ form.prenom(class="form-control mt-2", placeholder="Prenom") }}
+            <!--PHONE-->
+            {{ form.telephone.label() }}
+            {{ form.telephone(class="form-control mt-2", placeholder="Telephone") }}
+            <!--EMAIL-->
+            {{ form.email.label() }}
+            {{ form.email(class="form-control mt-2", placeholder="Email") }}
+            <!--PASSWORD-->
+            {{ form.password1.label() }}
+            {{ form.password1(class="form-control mt-2", placeholder="Password") }}
+            <!--PASSWORD2-->
+            {{ form.password2.label() }}
+            {{ form.password2(class="form-control mt-2", placeholder="Confirm password") }}
+            <!--ADD-MEM-->
+            {{ form.add_member.label() }}
+            {{ form.add_member(class="form-control mt-2", placeholder="Add member") }}
+            <!--ADDRESS-->
+            {{ form.adresse_rue.label() }}
+            {{ form.adresse_rue(class="form-control mt-2", placeholder="Adresse rue") }}
+            <!--CODEPOSTAL-->
+            {{ form.code_postal.label() }}
+            {{ form.code_postal(class="form-control mt-2", placeholder="Code postal") }}
+            <!--MEMO--> 
+            {{ form.memo.label() }}
+            {{ form.memo(class="form-control mt-2", placeholder="Memo") }}
+            <!--SUBMIT-->
+            <br>
+            <div class="d-grid gap-2">
+                {{form.submit(class="btn btn-primary", type="button")}}
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}

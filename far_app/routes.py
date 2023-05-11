@@ -1,6 +1,7 @@
 from far_app import app
 from flask import render_template
 from far_app.models import Carte
+from far_app.forms import RegisterForm
 
 
 # HOME/INDEX PAGE
@@ -17,3 +18,12 @@ def carte_page():
     cartes = Carte.query.all()
 
     return render_template('carte.html', cartes=cartes)
+
+# RESGISTER CLIENT
+
+
+@app.route('/register')
+def register_page():
+
+    form = RegisterForm()
+    return render_template('register.html', form=form)
