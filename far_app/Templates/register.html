@@ -1,43 +1,53 @@
 {% extends 'layout.html' %} {% block title %} Register page {% endblock %} {%
 block body %}
-<body class="text-center">
+<body>
     <div class="container">
         <h1 class="mb-5">Create an Account!</h1>
-        <form action="POST" class="form-register" style="color: white">
+        <h6 class="mb-3">Please field with * symbol need to fill in!</h6>
+        <form method="POST" class="form-register" style="color: white">
+            <!--SECURITY-TAG-->
+            {{ form.hidden_tag() }}
             <!--NOM-->
-            {{ form.nom.label() }}
-            {{ form.nom(class="form-control mt-2", placeholder="Nom") }}
+            <h6>{{ form.nom.label() }}</h6>
+            {{ form.nom(class="form-control mt-2", placeholder="Nom*") }}
             <!--PRENOM-->
-            {{ form.prenom.label() }}
-            {{ form.prenom(class="form-control mt-2", placeholder="Prenom") }}
+            <h6 class="mt-3">{{ form.prenom.label() }}</h6>
+            {{ form.prenom(class="form-control mt-2", placeholder="Prenom*") }}
             <!--PHONE-->
-            {{ form.telephone.label() }}
-            {{ form.telephone(class="form-control mt-2", placeholder="Telephone") }}
+            <h6 class="mt-3">{{ form.telephone.label() }}</h6>
+            {{ form.telephone(class="form-control mt-2", placeholder="Telephone*") }}
             <!--EMAIL-->
-            {{ form.email.label() }}
-            {{ form.email(class="form-control mt-2", placeholder="Email") }}
+            <h6 class="mt-3">{{ form.email.label() }}</h6>
+            {{ form.email(class="form-control mt-2", placeholder="Email*") }}
             <!--PASSWORD-->
-            {{ form.password1.label() }}
-            {{ form.password1(class="form-control mt-2", placeholder="Password") }}
+            <h6 class="mt-3">{{ form.password1.label() }}</h6>
+            {{ form.password1(class="form-control mt-2", placeholder="Password*") }}
             <!--PASSWORD2-->
-            {{ form.password2.label() }}
-            {{ form.password2(class="form-control mt-2", placeholder="Confirm password") }}
+            <h6 class="mt-3">{{ form.password2.label() }}</h6>
+            {{ form.password2(class="form-control mt-2", placeholder="Confirm password*") }}
             <!--ADD-MEM-->
-            {{ form.add_member.label() }}
+            <h6 class="mt-3">{{ form.add_member.label() }}</h6>
             {{ form.add_member(class="form-control mt-2", placeholder="Add member") }}
             <!--ADDRESS-->
-            {{ form.adresse_rue.label() }}
+            <h6 class="mt-3">{{ form.adresse_rue.label() }}</h6>
             {{ form.adresse_rue(class="form-control mt-2", placeholder="Adresse rue") }}
+            <!--ADDRESS-->
+            <h6 class="mt-3">{{ form.ville.label() }}</h6>
+            {{ form.ville(class="form-control mt-2", placeholder="Ville") }}
             <!--CODEPOSTAL-->
-            {{ form.code_postal.label() }}
-            {{ form.code_postal(class="form-control mt-2", placeholder="Code postal") }}
+            <h6 class="mt-3">{{ form.code_postal.label() }}</h6>
+            {{ form.code_postal(class="form-control mt-2", minlength="12", placeholder="Code postal") }}
             <!--MEMO--> 
-            {{ form.memo.label() }}
+            <h6 class="mt-3">{{ form.memo.label() }}</h6>
             {{ form.memo(class="form-control mt-2", placeholder="Memo") }}
             <!--SUBMIT-->
             <br>
+            {{form.submit(class="btn btn-lg btn-primary")}}
             <div class="d-grid gap-2">
-                {{form.submit(class="btn btn-primary", type="button")}}
+            </div>
+            <!--ADDSPACING-->
+            <div class="mt-5 mb-5">
+              .....
             </div>
         </form>
     </div>

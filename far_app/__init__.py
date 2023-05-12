@@ -7,3 +7,5 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///farpiscien.db'
 app.config['SECRET_KEY'] = '41caeef9044a11a7e38c4834'
 db = SQLAlchemy(app)
+
+from far_app import routes
