@@ -1,5 +1,5 @@
 from far_app import app
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash
 from far_app.models import Carte, Client
 from far_app.forms import RegisterForm
 from far_app import db
@@ -49,6 +49,6 @@ def register_page():
     if form.errors != {}:
         for err_msg in form.errors.values():
             #TRY TO GET THESE ERRORS
-            print(f'There Was an Errors: {err_msg}')
+            flash(f'There Was an Errors: {err_msg}', category='danger')
 
     return render_template('register.html', form=form)
