@@ -4,8 +4,7 @@ block body %}
 <table class="table">
   <thead>
     <tr class="table-dark">
-      <th scope="col">#</th>
-      <th scope="col">Carte ID</th>
+      <th scope="col"></th>
       <th scope="col">Type</th>
       <th scope="col">Prix</th>
       <th scope="col">Achte</th>
@@ -14,22 +13,24 @@ block body %}
   <tbody>
     <!--JINJA LOGIC-->
     {% for carte in cartes %}
+    <!--MODAL-->
+    {% include 'includes/item_modal.html' %}
     <tr class="table-dark">
-      <th scope="row">{{ carte.id }}</th>
-      <td>{{ carte.id }}</td>
+      <th scope="row"></th>
+      <!--<td>{{ carte.id }}</td>-->
       {% if carte.type_carte == 'Unlimited' %}
-
+      
       <td>{{ carte.type_carte }}</td>
-
+      
       {% else %}
-
+      
       <td>{{ carte.type_carte }} Minutes</td>
-
+      
       {% endif %}
-
+      
       <td>{{ carte.solde }}£</td>
       <td>
-        <button class="btn btn-outline btn-success">Achte</button>
+        <button class="btn btn-outline btn-success" data-bs-toggle="modal" data-bs-target="#buyModal-{{ carte.id }}">Achte</button>
       </td>
     </tr>
     {% endfor %}

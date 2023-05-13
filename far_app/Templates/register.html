@@ -43,7 +43,10 @@ block body %}
             <!--SUBMIT-->
             <br>
             {{form.submit(class="btn btn-lg btn-primary")}}
-            <div class="d-grid gap-2">
+            <!--LOGIN-->
+            <h6 class="mt-5">You already have an account?</h6>
+            <div class="checkbox mt-3">
+                <a class="btn btn-sm btn-secondary" href="{{url_for('login_page')}}">Login now!</a>
             </div>
             <!--ADDSPACING-->
             <div class="mt-5 mb-5">

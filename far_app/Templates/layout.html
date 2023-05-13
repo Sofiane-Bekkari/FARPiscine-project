@@ -12,6 +12,8 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+     <!--FONTAWESOME-->
+     <script src="https://kit.fontawesome.com/45f3285f50.js" crossorigin="anonymous"></script>
 
     <title>{% block title%} {% endblock %}</title>
   </head>
@@ -42,10 +44,22 @@
             <a class="nav-link" href="{{url_for('carte_page')}}">Cartes</a>
           </div>
         </div>
-        <div class="d-flex">
-          <a class="nav-link" href="#">Log in</a>
-          <a class="nav-link" href="{{url_for('register_page')}}">Register</a>
-        </div>
+        <!--CLIENT LOGIN-->
+        {% if current_user.is_authenticated %}
+          <div class="d-flex">
+            <a class="nav-link" href="#"><i class="fas fa-clock fa-lg"></i>Timer
+              <!--TIMER NEED FUNCTION DISPLAY-->
+              <span class="badge bg-success"> {{ current_user.id }}:00:03</span></a>
+            <span class="nav-link" href="#"><i class="fas fa-user fa-lg"></i> Welcome
+              <span class="badge bg-secondary">{{ current_user.nom }}</span></span>
+            <a class="nav-link" href="{{url_for('logout_page')}}"><i class="fas fa-sign-out-alt fa-lg"></i> Logout</a>
+          </div>
+        {% else%}
+          <div class="d-flex">
+            <a class="nav-link" href="{{url_for('login_page')}}">Log in</a>
+            <a class="nav-link" href="{{url_for('register_page')}}">Register</a>
+          </div>
+        {% endif%}
       </div>
     </nav>
     <!--END NAV-->

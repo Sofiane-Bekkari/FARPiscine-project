@@ -3,9 +3,8 @@ from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
 from far_app.models import Client
 
+
 # REGISTER CLIENT FROM
-
-
 class RegisterForm(FlaskForm):
 
     #CHECK IF THERE EXIST UNIQUE FIELD ON VALIDATION
@@ -14,8 +13,8 @@ class RegisterForm(FlaskForm):
         if telephone:
             raise ValidationError('Telephone already exists! Please try a different phone number!')
     #CHECK THIS SECOND UNIQUE FIELD ON VALIDATION
-    def validate_telephone(self, email_to_check):
-        email = Client.query.filter_by(telephone=email_to_check.data).first()
+    def validate_email(self, email_to_check):
+        email = Client.query.filter_by(email=email_to_check.data).first()
         if email:
             raise ValidationError('Email already exists! Please try a different email adresse!')
 
@@ -31,3 +30,12 @@ class RegisterForm(FlaskForm):
     code_postal = StringField(label='Code postal')
     memo = StringField(label='Memo')
     submit = SubmitField(label='Create Account')
+
+
+# LOGIN CLIENT FORM
+class LoginForm(FlaskForm):
+    email = StringField(label='Email:', validators=[DataRequired()])
+    password = StringField(label='Password:', validators=[DataRequired()])
+    submit = SubmitField(label='Sign in')
+
+    
