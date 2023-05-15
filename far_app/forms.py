@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, IntegerField
+from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError, number_range
 from far_app.models import Client
 
 
@@ -24,7 +24,8 @@ class RegisterForm(FlaskForm):
     email = StringField(label='Email', validators=[Email(), DataRequired()])
     password1 = PasswordField(label='Password', validators=[Length(min=6), DataRequired()])
     password2 = PasswordField(label='Confirm password', validators=[EqualTo('password1') , DataRequired()])
-    add_member = StringField(label='Member Prenom')
+    code_pin =  IntegerField(label='Code PIN:')
+    #code_pin =  IntegerField(label='Code PIN:', validators=[number_range(min=8, max=8, message='Please 8 dig') , DataRequired()])
     adresse_rue = StringField(label='Adresse & Rue')
     ville = StringField(label='Ville')
     code_postal = StringField(label='Code postal')
@@ -37,5 +38,18 @@ class LoginForm(FlaskForm):
     email = StringField(label='Email:', validators=[DataRequired()])
     password = StringField(label='Password:', validators=[DataRequired()])
     submit = SubmitField(label='Sign in')
+
+    
+# PURCHASE CARTE
+class PurchaseCartForm(FlaskForm):
+    submit = SubmitField(label='Purchase Card')
+
+
+# ADD A MEMBER
+class AddMemberForm(FlaskForm):
+    nom = StringField(label='Nom de member:', validators=[DataRequired()])
+    prenom = StringField(label='Prenom de member:', validators=[DataRequired()])
+    age = IntegerField(label='Age de member optional:',validators=[number_range(min=1) ,DataRequired()])
+    submit = SubmitField(label='Add Member')
 
     

@@ -49,9 +49,9 @@
           <div class="d-flex">
             <a class="nav-link" href="#"><i class="fas fa-clock fa-lg"></i>Timer
               <!--TIMER NEED FUNCTION DISPLAY-->
-              <span class="badge bg-success"> {{ current_user.id }}:00:03</span></a>
+              <span class="badge bg-success"> {{ current_user.timer }}</span></a>
             <span class="nav-link" href="#"><i class="fas fa-user fa-lg"></i> Welcome
-              <span class="badge bg-secondary">{{ current_user.nom }}</span></span>
+              <span class="badge bg-secondary">{{ current_user.prenom }}</span></span>
             <a class="nav-link" href="{{url_for('logout_page')}}"><i class="fas fa-sign-out-alt fa-lg"></i> Logout</a>
           </div>
         {% else%}

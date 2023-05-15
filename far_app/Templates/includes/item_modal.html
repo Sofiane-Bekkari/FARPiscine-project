@@ -16,8 +16,45 @@
        <p>You want buy this carte of {{ carte.solde }}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <form method="post">
+          {{ purchase_form.hidden_tag() }}
+          <input type="hidden" id="purchase_carte" name="purchase_carte" value="{{ carte.solde }}">
+          {{ purchase_form.submit(class="btn btn-lg btn-outline-success") }}
+        </form>
+        <button type="button" class="btn btn-lg btn-danger" data-bs-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!---MODEL TO ADD MEMBER-->
+<div class="modal fade" id="addModal-{{ current_user.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Do you want add a member?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <h5 class="modal-title mt-2">Add a member to you account!</h5>
+       <form method="post">
+         {{ member_form.hidden_tag() }}
+         <!--NOM DE MEMBER-->
+         <h6 class="modal-title mt-5">{{ member_form.nom.label() }}</h6>
+         {{ member_form.nom(class="form-control mt-2", placeholder="Nom de member*") }}
+         <!--PRENOM DE MEMBER-->
+         <h6 class="modal-title mt-2">{{ member_form.prenom.label() }}</h6>
+         {{ member_form.prenom(class="form-control mt-2", placeholder="Prenom de member*") }}
+         <!--PRENOM DE MEMBER-->
+         <h6 class="modal-title mt-2">{{ member_form.age.label() }}</h6>
+         {{ member_form.age(class="form-control mt-2 mb-5", placeholder="Age de member") }}
+         <!--SUBMIT-->
+         <input type="hidden" id="add_member" name="add_member" value="{{ current_user.id }}">
+         {{ member_form.submit(class="btn btn-lg btn-success") }}
+         <button type="button" class="btn btn-lg btn-danger" data-bs-dismiss="modal">Cancel</button>
+        </form>
+      </div>
+      <div class="modal-footer">
       </div>
     </div>
   </div>

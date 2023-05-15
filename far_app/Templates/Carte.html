@@ -1,40 +1,73 @@
 {% extends 'layout.html' %} {% block title %} Cartes page {% endblock %} {%
 block body %}
-<!--TABLES-->
-<table class="table">
-  <thead>
-    <tr class="table-dark">
-      <th scope="col"></th>
-      <th scope="col">Type</th>
-      <th scope="col">Prix</th>
-      <th scope="col">Achte</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!--JINJA LOGIC-->
-    {% for carte in cartes %}
-    <!--MODAL-->
-    {% include 'includes/item_modal.html' %}
-    <tr class="table-dark">
-      <th scope="row"></th>
-      <!--<td>{{ carte.id }}</td>-->
-      {% if carte.type_carte == 'Unlimited' %}
-      
-      <td>{{ carte.type_carte }}</td>
-      
-      {% else %}
-      
-      <td>{{ carte.type_carte }} Minutes</td>
-      
-      {% endif %}
-      
-      <td>{{ carte.solde }}£</td>
-      <td>
-        <button class="btn btn-outline btn-success" data-bs-toggle="modal" data-bs-target="#buyModal-{{ carte.id }}">Achte</button>
-      </td>
-    </tr>
-    {% endfor %}
-    <!--JINJA LOGIC END-->
-  </tbody>
-</table>
-{% endblock%}
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h3 class="mt-5">Avaliable Carte to buy!</h3>
+        <!--TABLES-->
+        <table class="table mt-3">
+          <thead>
+            <tr class="table-dark">
+              <th scope="col"></th>
+              <th scope="col">Type</th>
+              <th scope="col">Prix</th>
+              <th scope="col">Achte</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--JINJA LOGIC-->
+            {% for carte in cartes %}
+            <!--MODAL-->
+            {% include 'includes/item_modal.html' %}
+            <tr class="table-dark">
+              <th scope="row"></th>
+              <!--<td>{{ carte.id }}</td>-->
+              {% if carte.type_carte == 'Unlimited' %}
+              
+              <td>{{ carte.type_carte }}</td>
+              
+              {% else %}
+              
+              <td>{{ carte.type_carte }} Minutes</td>
+              
+              {% endif %}
+              
+              <td>{{ carte.solde }} €</td>
+              <td>
+                <button class="btn btn-outline btn-success" data-bs-toggle="modal" data-bs-target="#buyModal-{{ carte.id }}">Achte</button>
+              </td>
+            </tr>
+            {% endfor %}
+            <!--JINJA LOGIC END-->
+          </tbody>
+        </table>
+    </div>
+    <div class="col-4">
+      <h3 class="mt-5">Members List</h3>
+      <table class="table mt-3">
+        <thead>
+          <tr class="table-dark">
+            <th scope="col">list</th>
+            <th scope="col">Names</th>
+                 <!--JINJA LOGIC-->
+                 {% for member in members %}
+                    
+                 <tr class="table-dark">
+                   <th scope="row">Member</th>
+                   <td> {{ member.member_prenom }} {{ member.member_nom }}</td>
+                </tr>
+                {% endfor %}
+        </thead>
+        <tbody>
+          <tr class="table-dark">
+            <td>
+              <button class="btn btn-outline btn-success mt-4" id="add_mem" data-bs-toggle="modal" data-bs-target="#addModal-{{ current_user.id }}">Add member</button>
+            </td>
+            <td></td>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+  {% endblock%}

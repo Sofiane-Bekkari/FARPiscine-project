@@ -1,5 +1,10 @@
 {% extends 'layout.html' %} {% block title %} Register page {% endblock %} {%
 block body %}
+<style>
+    .container{
+        width: 50%;
+    }
+</style>
 <body>
     <div class="container">
         <h1 class="mb-5">Create an Account!</h1>
@@ -19,15 +24,15 @@ block body %}
             <!--EMAIL-->
             <h6 class="mt-3">{{ form.email.label() }}</h6>
             {{ form.email(class="form-control mt-2", placeholder="Email*") }}
+            <!--CODE-PIN-->
+            <h6 class="mt-3">{{ form.code_pin.label() }}</h6>
+            {{ form.code_pin(class="form-control mt-2", type="number", placeholder="Code PIN* is 8 digit") }}
             <!--PASSWORD-->
             <h6 class="mt-3">{{ form.password1.label() }}</h6>
             {{ form.password1(class="form-control mt-2", placeholder="Password*") }}
             <!--PASSWORD2-->
             <h6 class="mt-3">{{ form.password2.label() }}</h6>
             {{ form.password2(class="form-control mt-2", placeholder="Confirm password*") }}
-            <!--ADD-MEM-->
-            <h6 class="mt-3">{{ form.add_member.label() }}</h6>
-            {{ form.add_member(class="form-control mt-2", placeholder="Add member") }}
             <!--ADDRESS-->
             <h6 class="mt-3">{{ form.adresse_rue.label() }}</h6>
             {{ form.adresse_rue(class="form-control mt-2", placeholder="Adresse rue") }}
@@ -36,10 +41,8 @@ block body %}
             {{ form.ville(class="form-control mt-2", placeholder="Ville") }}
             <!--CODEPOSTAL-->
             <h6 class="mt-3">{{ form.code_postal.label() }}</h6>
-            {{ form.code_postal(class="form-control mt-2", minlength="12", placeholder="Code postal") }}
-            <!--MEMO--> 
-            <h6 class="mt-3">{{ form.memo.label() }}</h6>
-            {{ form.memo(class="form-control mt-2", placeholder="Memo") }}
+            {{ form.code_postal(class="form-control mt-2", placeholder="Code postal") }}
+         
             <!--SUBMIT-->
             <br>
             {{form.submit(class="btn btn-lg btn-primary")}}
