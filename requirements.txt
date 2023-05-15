@@ -1,3 +1,8 @@
-Flask==2.2.2
-flask-sqlalchemy==1.4.6
-flask-wtf==0.4.5
+Flask
+flask-sqlalchemy
+flask-wtf
+wtforms
+flask_bcrypt
+flask_login
+email_validator
+gunicorn
